@@ -24,6 +24,10 @@ if (file_exists(ROOT . 'vendor/autoload.php')) {
     require ROOT . 'vendor/autoload.php';
 }
 
+
+//Inicializar las sesiones
+session_start();
+
 // load application config (error reporting etc.)
 require APP . 'config/config.php';
 

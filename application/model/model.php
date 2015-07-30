@@ -55,7 +55,7 @@ class Model
     {
         $sql = "INSERT INTO song (artist, track, link) VALUES (:artist, :track, :link)";
         $query = $this->db->prepare($sql);
-        $parameters = array(':artist' => $artist, ':track' => $track, ':link' => $link);
+        $parameters = array(':artist' => strip_tags($artist), ':track' => $track, ':link' => $link);
 
         // useful for debugging: you can see the SQL behind above construction by using:
         // echo '[ PDO DEBUG ]: ' . Helper::debugPDO($sql, $parameters);  exit();

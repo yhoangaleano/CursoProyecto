@@ -1,3 +1,30 @@
+
+<div class="row">
+
+	<div class="col-md-12">
+		
+
+		<form id="frmPersona">
+			<div class="form-group">
+				<label for="txtNombre">Nombre</label>
+				<input type="text" id="txtNombre" name="txtNombre" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="txtApellido">Apellido</label>
+				<input type="text" id="txtApellido" name="txtApellido" class="form-control">
+
+			</div>
+			<div class="form-group">
+				<label for="txtEdad">Edad</label>
+				<input type="text" id="txtEdad" name="txtEdad" class="form-control">
+			</div>
+			<div class="form-group">
+				<input type="button" id="btnGuardar" name="btnGuardar" class="btn btn-success btn-block" value="Guardar" />
+			</div>
+		</form>
+	</div>
+</div>
+
 <h3>Listado de personas en la base de datos</h3>
 <table class="table table-hover">
 	<thead style="background-color: #ddd; font-weight: bold;">
@@ -23,3 +50,10 @@
 		<?php } ?>
 	</tbody>
 </table>
+
+
+<?php 
+
+$js = '<script src="'.URL.'js/personas.js" type="text/javascript"></script>';
+
+?>

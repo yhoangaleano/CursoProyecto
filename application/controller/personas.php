@@ -17,18 +17,17 @@ class Personas extends Controller
 		require APP . 'view/_templates/header.php';
         require APP . 'view/personas/index.php';
         require APP . 'view/_templates/footer.php';
-
-        // $this->render("index", $personas);
-
 	}   
 
 	public function deletepersona($id)
 	{
 		$persona = $this->modelPersona->getPersona($id);
+		$this->render("delete", array("persona" => $persona));
+	}
 
-		require APP . 'view/_templates/header.php';
-        require APP . 'view/personas/delete.php';
-        require APP . 'view/_templates/footer.php';
+	public function guardar()
+	{
+		echo json_encode($_REQUEST);
 	}
 
 }

@@ -66,10 +66,10 @@ class Controller
         else
             $data=$datos;
 
-        define('content', APP.'views/'.strtolower(get_class($this)).'/'.$view.'.php');
+        define('content', APP.'view/'.strtolower(get_class($this)).'/'.$view.'.php');
         
         if($estado){
-            require APP.'views/_templates/'.$this->layout.'.php';
+            require APP.'view/_templates/'.$this->layout.'.php';
         }else{
             require content;
         }

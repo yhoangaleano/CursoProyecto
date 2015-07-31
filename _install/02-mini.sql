@@ -1,4 +1,90 @@
-INSERT INTO `mini`.`song` (`id`, `artist`, `track`, `link`) VALUES
+-- phpMyAdmin SQL Dump
+-- version 4.1.12
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 01-08-2015 a las 00:34:10
+-- Versión del servidor: 5.6.16
+-- Versión de PHP: 5.5.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `mini`
+--
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_SavePersona`(IN `nombre` varchar(50), IN `apellido` varchar(50), IN `edad` INT)
+BEGIN
+	INSERT INTO persona (nombre, apellido, edad) values (nombre, apellido, edad);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpdatePersona`(IN `_id` INT, IN `_nombre` varchar(50), IN `_apellido` varchar(50), IN `_edad` INT)
+BEGIN
+	UPDATE persona
+	SET nombre = _nombre, apellido = _apellido, edad = _edad
+	WHERE id = _id;
+END$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `persona`
+--
+
+CREATE TABLE IF NOT EXISTS `persona` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `edad` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `persona`
+--
+
+INSERT INTO `persona` (`id`, `nombre`, `apellido`, `edad`) VALUES
+(1, 'Yhoan', 'Galeano', 21),
+(2, 'Luis', 'Galindo', 23),
+(3, 'ddsa', 'dsasad', 3),
+(4, 'Antony', 'Ramirez', 56),
+(5, 'dsadsdas', 'dsadsa', 4),
+(6, 'Jesus', 'Conde', 23),
+(7, 'Jose', 'Perez', 45);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `song`
+--
+
+CREATE TABLE IF NOT EXISTS `song` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `artist` text COLLATE utf8_unicode_ci NOT NULL,
+  `track` text COLLATE utf8_unicode_ci NOT NULL,
+  `link` text COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=31 ;
+
+--
+-- Volcado de datos para la tabla `song`
+--
+
+INSERT INTO `song` (`id`, `artist`, `track`, `link`) VALUES
 (1, 'Dena', 'Cash, Diamond Ring, Swimming Pools', 'http://www.youtube.com/watch?v=r4CDc9yCAqE'),
 (2, 'Jessy Lanza', 'Kathy Lee', 'http://vimeo.com/73455369'),
 (3, 'The Orwells', 'In my Bed (live)', 'http://www.youtube.com/watch?v=8tA_2qCGnmE'),
@@ -29,3 +115,7 @@ INSERT INTO `mini`.`song` (`id`, `artist`, `track`, `link`) VALUES
 (28, 'Karmon', 'Turning Point (Original Mix)', 'https://www.youtube.com/watch?v=-tB-zyLSPEo'),
 (29, 'Shuttle Life', 'The Birds', 'http://www.youtube.com/watch?v=-I3m3cWDEtM'),
 (30, 'SantÃ©', 'Homegirl (Rampa Mix)', 'http://www.youtube.com/watch?v=fnhMNOWxLYw');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

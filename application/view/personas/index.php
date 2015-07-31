@@ -3,25 +3,51 @@
 
 	<div class="col-md-12">
 		
+		<!-- Button trigger modal -->
+		<button id="btnAbrirModal" type="button" class="btn btn-primary btn-lg">
+			Crear persona
+		</button>
 
-		<form id="frmPersona">
-			<div class="form-group">
-				<label for="txtNombre">Nombre</label>
-				<input type="text" id="txtNombre" name="txtNombre" class="form-control">
-			</div>
-			<div class="form-group">
-				<label for="txtApellido">Apellido</label>
-				<input type="text" id="txtApellido" name="txtApellido" class="form-control">
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Datos persona</h4>
+					</div>
+					<div class="modal-body">
+						<form id="frmPersona">
+							<div class="form-group">
+								<input type="hidden" id="txtId" name="txtId" class="form-control">
+								<label for="txtNombre">Nombre</label>
+								<input type="text" id="txtNombre" name="txtNombre" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="txtApellido">Apellido</label>
+								<input type="text" id="txtApellido" name="txtApellido" class="form-control">
 
+							</div>
+							<div class="form-group">
+								<label for="txtEdad">Edad</label>
+								<input type="text" id="txtEdad" name="txtEdad" class="form-control">
+							</div>
+							<div class="form-group">
+								<input type="button" id="btnGuardar" name="btnGuardar" class="btn btn-success btn-block" value="Guardar" />
+								<input type="button" id="btnModificar" name="btnModificar" class="btn btn-primary btn-block" value="Modificar" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
 			</div>
-			<div class="form-group">
-				<label for="txtEdad">Edad</label>
-				<input type="text" id="txtEdad" name="txtEdad" class="form-control">
-			</div>
-			<div class="form-group">
-				<input type="button" id="btnGuardar" name="btnGuardar" class="btn btn-success btn-block" value="Guardar" />
-			</div>
-		</form>
+		</div>
+
+		
+		
 	</div>
 </div>
 
@@ -45,7 +71,7 @@
 			<td><?php if (isset($persona->apellido)) echo htmlspecialchars($persona->apellido, ENT_QUOTES, 'UTF-8'); ?></td>
 			<td><?php if (isset($persona->edad)) echo htmlspecialchars($persona->edad, ENT_QUOTES, 'UTF-8'); ?></td>
 			<td><a href="<?php echo URL . 'personas/deletepersona/' . htmlspecialchars($persona->id, ENT_QUOTES, 'UTF-8'); ?>">delete</a></td>
-			<td><a href="<?php echo URL . 'personas/editpersona/' . htmlspecialchars($persona->id, ENT_QUOTES, 'UTF-8'); ?>">edit</a></td>
+			<td><a onclick='personas.edit(<?php echo json_encode($persona); ?>)'>edit</a></td>
 		</tr>
 		<?php } ?>
 	</tbody>
